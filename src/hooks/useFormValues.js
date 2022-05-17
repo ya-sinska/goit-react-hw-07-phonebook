@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import {  useDispatch, useSelector } from 'react-redux'
-import { getItemsValue } from "redux/contactsItemSlice";
-import { addContacts } from "redux/contactsOperation";
+import { contactsItemSlice, contactsOperation } from "../redux";
+
 export const useFormValues = () => {
         const { register, handleSubmit,reset, formState: { errors } } = useForm({
         defaultValues: {
@@ -10,7 +10,7 @@ export const useFormValues = () => {
         }
     });
     const dispatch = useDispatch();
-    const stateItems = useSelector(getItemsValue);
+    const stateItems = useSelector(contactsItemSlice.getItemsValue);
     const onSubmit = (values) => {
         const item = {
             name: values.name ,
@@ -21,7 +21,7 @@ export const useFormValues = () => {
             alert(`${values.name.name} is already is contacts`);
             reset(); 
             return
-        } else {dispatch(addContacts(item));}
+        } else {dispatch(contactsOperation.addContacts(item));}
         reset();
     };
     return{register, handleSubmit, errors, onSubmit }

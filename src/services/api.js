@@ -9,16 +9,11 @@ export const addContact = async values => {
 
 export const getContacts = async () => {
   const {data} = await axios.get('/contacts');
-    return data;
-    
+  return data;    
 };
-getContacts();
+
 export const deleteContact = async id => {
   const {data} = await axios.delete(`/contacts/${id}`);
   return data;
 };
 
-// export const updateContacts = async fields => {
-//   const {data} = await axios.put(`/contacts/${fields.id}`, fields);
-//   return data;
-// };

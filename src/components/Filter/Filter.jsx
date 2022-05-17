@@ -1,7 +1,7 @@
 import { Label, InputField } from './Filter.styled'
-import { useChange } from 'hooks/useChange';
+import { useChange } from 'hooks';
 export const Filter = () => {
-    const change = useChange();
+    const change = useChange.useChange();
  return (
 <>
     <Label htmlFor="filter">Find contacts by name </Label>
